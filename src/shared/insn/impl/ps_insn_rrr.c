@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ps_insn_rrr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 03:47:46 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/22 01:55:25 by kiroussa         ###   ########.fr       */
+/*   Created: 2023/11/22 01:04:49 by kiroussa          #+#    #+#             */
+/*   Updated: 2023/11/22 01:04:53 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include <ps/insn.h>
 
-# include <ps/stack.h>
-
-# include <ft/string/parse.h>
-# include <ft/string.h>
-
-t_stack	*ps_parse_stack(int argc, char **argv);
-
-#endif // PARSER_H
+void	ps_insn_rrr(t_stack *a, t_stack *b)
+{
+	ps_stack_revrotate(a);
+	ps_stack_revrotate(b);
+}

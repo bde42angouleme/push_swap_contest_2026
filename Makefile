@@ -6,7 +6,7 @@
 #    By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/06 21:19:50 by kiroussa          #+#    #+#              #
-#    Updated: 2023/11/18 04:43:15 by kiroussa         ###   ########.fr        #
+#    Updated: 2023/11/22 02:51:06 by kiroussa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,22 +23,39 @@ COMMON_SRC_DIR	= $(SRC_FOLDER)/shared
 PS_SRC_DIR		= $(SRC_FOLDER)/push_swap
 CHECKER_SRC_DIR	= $(SRC_FOLDER)/checker
 
-COMMON_SRC		=	stack/ps_stack_free.c \
-					stack/ps_stack_init.c \
-					stack/ps_stack_print.c \
-					stack/ps_stack_resize.c \
+COMMON_SRC		=	insn/impl/ps_insn_pa.c \
+					insn/impl/ps_insn_pb.c \
+					insn/impl/ps_insn_ra.c \
+					insn/impl/ps_insn_rb.c \
+					insn/impl/ps_insn_rr.c \
+					insn/impl/ps_insn_rra.c \
+					insn/impl/ps_insn_rrb.c \
+					insn/impl/ps_insn_rrr.c \
+					insn/impl/ps_insn_sa.c \
+					insn/impl/ps_insn_sb.c \
+					insn/impl/ps_insn_ss.c \
+					insn/ps_insn_exec.c \
+					insn/ps_insn_from_name.c \
+					insn/ps_insn_name.c \
+					stack/parser/ps_parse_stack.c \
 					stack/public/ps_stack_push.c \
 					stack/public/ps_stack_revrotate.c \
 					stack/public/ps_stack_rotate.c \
 					stack/public/ps_stack_swap.c \
 					stack/query/ps_stack_bottom.c \
+					stack/query/ps_stack_contains.c \
 					stack/query/ps_stack_get.c \
 					stack/query/ps_stack_is_empty.c \
+					stack/query/ps_stack_is_sorted.c \
 					stack/query/ps_stack_top.c \
 					stack/restricted/ps_stack_r_insert.c \
 					stack/restricted/ps_stack_r_pop.c \
 					stack/restricted/ps_stack_r_push.c \
-					stack/restricted/ps_stack_r_remove.c
+					stack/restricted/ps_stack_r_remove.c \
+					stack/ps_stack_free.c \
+					stack/ps_stack_init.c \
+					stack/ps_stack_print.c \
+					stack/ps_stack_resize.c
 
 PS_SRC			= main.c
 CHECKER_SRC		= main.c
@@ -54,7 +71,7 @@ SRC_OBJS		= $(COMMON_OBJ) $(PS_OBJ)
 BONUS_SRC_OBJS	= $(COMMON_OBJ) $(CHECKER_OBJ)
 
 CC				= clang
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -g3
 COPTS			= -I $(INCLUDES) -I $(LIBFT_SRC)/include
 
 all:			$(NAME)

@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ps_insn_name.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 03:47:46 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/22 01:55:25 by kiroussa         ###   ########.fr       */
+/*   Created: 2023/11/22 01:14:05 by kiroussa          #+#    #+#             */
+/*   Updated: 2023/11/22 02:36:56 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include <ps/insn.h>
 
-# include <ps/stack.h>
+const char	*ps_insn_name(t_insn insn)
+{
+	static const char	*insn_name[] = {
+	[NONE] = "none",
+	[SA] = "sa",
+	[SB] = "sb",
+	[SS] = "ss",
+	[PA] = "pa",
+	[PB] = "pb",
+	[RA] = "ra",
+	[RB] = "rb",
+	[RR] = "rr",
+	[RRA] = "rra",
+	[RRB] = "rrb",
+	[RRR] = "rrr",
+	};
 
-# include <ft/string/parse.h>
-# include <ft/string.h>
-
-t_stack	*ps_parse_stack(int argc, char **argv);
-
-#endif // PARSER_H
+	return (insn_name[insn]);
+}

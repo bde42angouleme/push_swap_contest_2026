@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:58:28 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/18 05:03:59 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:27:27 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 typedef enum e_insn
 {
-	PA = 0,
+	NONE = 0,
+	PA,
 	PB,
 	SA,
 	SB,
@@ -36,6 +37,10 @@ typedef struct s_insn_info
 	void	(*f)(t_stack *, t_stack *);
 }	t_insn_info;
 
+void		ps_insn_exec(t_insn insn, t_stack *a, t_stack *b);
+const char	*ps_insn_name(t_insn insn);
+t_insn		ps_insn_from_name(const char *name);
+
 void		ps_insn_pa(t_stack *a, t_stack *b);
 void		ps_insn_pb(t_stack *a, t_stack *b);
 void		ps_insn_sa(t_stack *a, t_stack *b);
@@ -47,7 +52,5 @@ void		ps_insn_rr(t_stack *a, t_stack *b);
 void		ps_insn_rra(t_stack *a, t_stack *b);
 void		ps_insn_rrb(t_stack *a, t_stack *b);
 void		ps_insn_rrr(t_stack *a, t_stack *b);
-
-t_insn_info	*ps_insn_info_map(void);
 
 #endif

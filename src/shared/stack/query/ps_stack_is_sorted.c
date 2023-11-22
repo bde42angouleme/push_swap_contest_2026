@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ps_stack_is_sorted.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 03:47:46 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/22 01:55:25 by kiroussa         ###   ########.fr       */
+/*   Created: 2023/11/22 02:39:50 by kiroussa          #+#    #+#             */
+/*   Updated: 2023/11/22 02:47:23 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include <ps/stack.h>
 
-# include <ps/stack.h>
+int	ps_stack_is_sorted(t_stack *stack)
+{
+	size_t	i;
 
-# include <ft/string/parse.h>
-# include <ft/string.h>
-
-t_stack	*ps_parse_stack(int argc, char **argv);
-
-#endif // PARSER_H
+	i = 0;
+	while (i < stack->size - 1)
+	{
+		if (stack->values[i] < stack->values[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}

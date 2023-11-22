@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:46:35 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/18 04:39:48 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:49:55 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ void	ps_stack_print(t_stack *stack);
 int		ps_stack_is_empty(t_stack *stack);
 
 /**
+ * @brief Checks if the stack is sorted.
+ * @param stack The stack to check.
+ * @return 1 if the stack is sorted, 0 otherwise.
+ */
+int		ps_stack_is_sorted(t_stack *stack);
+
+/**
  * @brief Returns the value at the top of the stack.
  * @param stack The stack to check.
  * @return The value at the top of the stack.
@@ -83,6 +90,14 @@ int		ps_stack_bottom(t_stack *stack);
  * @return The value at the specified index.
  */
 int		ps_stack_get(t_stack *stack, size_t index);
+
+/**
+ * @brief Checks if the stack contains a value.
+ * @param stack The stack to check.
+ * @param value The value to check for.
+ * @return 1 if the stack contains the value, 0 otherwise.
+ */
+int		ps_stack_contains(t_stack *stack, int value);
 
 /* Restricted operations (read-write) */
 

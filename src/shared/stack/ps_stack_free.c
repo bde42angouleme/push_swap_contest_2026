@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:02:11 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/18 04:17:57 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/11/22 02:52:29 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	ps_stack_free(t_stack **stack)
 {
+	if (!stack || !*stack)
+		return ;
 	free((*stack)->values);
 	free(*stack);
 	*stack = NULL;
