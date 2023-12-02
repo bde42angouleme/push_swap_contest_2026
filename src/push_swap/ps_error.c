@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_stack_is_sorted.c                               :+:      :+:    :+:   */
+/*   ps_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 02:39:50 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/02 00:30:13 by kiroussa         ###   ########.fr       */
+/*   Created: 2023/11/24 00:19:34 by kiroussa          #+#    #+#             */
+/*   Updated: 2023/11/24 00:19:44 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ps/stack.h>
+#include <ft/print.h>
+#include <stdlib.h>
 
-int	ps_stack_is_sorted(t_stack *stack)
+void	ps_error(void)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < stack->size - 1)
-	{
-		if (stack->values[i] < stack->values[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
+	ft_putendl_fd(2, "Error");
+	exit(1);
 }

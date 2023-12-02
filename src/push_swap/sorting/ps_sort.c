@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_stack_is_sorted.c                               :+:      :+:    :+:   */
+/*   ps_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 02:39:50 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/02 00:30:13 by kiroussa         ###   ########.fr       */
+/*   Created: 2023/11/24 01:26:05 by kiroussa          #+#    #+#             */
+/*   Updated: 2023/11/24 01:28:01 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ps/stack.h>
+#include <ps/sort.h>
 
-int	ps_stack_is_sorted(t_stack *stack)
+void	ps_sort(t_stack *a, t_stack *b)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < stack->size - 1)
-	{
-		if (stack->values[i] < stack->values[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
+	if (ps_stack_is_sorted(a))
+		return ;
+	if (a->size <= 5)
+		ps_sort_small(a, b);
+	else
+		ps_sort_big(a, b);
 }

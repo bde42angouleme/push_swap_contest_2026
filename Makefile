@@ -6,7 +6,7 @@
 #    By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/06 21:19:50 by kiroussa          #+#    #+#              #
-#    Updated: 2023/11/22 02:51:06 by kiroussa         ###   ########.fr        #
+#    Updated: 2023/11/24 01:22:57 by kiroussa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,10 @@ COMMON_SRC		=	insn/impl/ps_insn_pa.c \
 					stack/ps_stack_print.c \
 					stack/ps_stack_resize.c
 
-PS_SRC			= main.c
-CHECKER_SRC		= main.c
+PS_SRC			=	main.c \
+					ps_error.c
+
+CHECKER_SRC		=	main.c
 
 COMMON_SRC		:= $(addprefix $(COMMON_SRC_DIR)/, $(COMMON_SRC))
 PS_SRC			:= $(addprefix $(PS_SRC_DIR)/, $(PS_SRC))
@@ -77,7 +79,7 @@ COPTS			= -I $(INCLUDES) -I $(LIBFT_SRC)/include
 all:			$(NAME)
 
 $(NAME):		$(LIBFT) $(SRC_OBJS)
-	$(CC) $(CFLAGS) $(COPTS) $(SRC_OBJS) -o $(NAME) $(LIBFT)
+	$(CC) $(CFLAGS) $(COPTS) -DPS_INSN_PRINT=1 $(SRC_OBJS) -o $(NAME) $(LIBFT)
 
 bonus:			$(BONUS_NAME)
 

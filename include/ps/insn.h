@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:58:28 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/22 02:27:27 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/02 00:17:23 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define INSN_H
 
 # include <ps/stack.h>
+
+# ifndef PS_INSN_PRINT
+#  define PS_INSN_PRINT 0
+# endif
 
 typedef enum e_insn
 {
