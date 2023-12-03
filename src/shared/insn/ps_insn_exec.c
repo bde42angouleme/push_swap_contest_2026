@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 05:04:43 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/24 01:22:35 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:27:18 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ps_insn_exec(t_insn insn, t_stack *a, t_stack *b)
 	{
 		if (insn_info_map[i].insn == insn)
 		{
-			if (PS_INSN_PRINT)
+			if (*ps_insn_should_print())
 				ft_printf("%s\n", ps_insn_name(insn));
 			insn_info_map[i].f(a, b);
 			return ;

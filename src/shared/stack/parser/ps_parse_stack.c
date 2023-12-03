@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 01:54:25 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/22 02:56:40 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:51:15 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,28 +45,29 @@ static size_t	ps_stacksize(int argc, char **argv)
 
 t_stack	*ps_parse_stack(int argc, char **argv)
 {
-	t_stack	*stack;
+	t_stack	*s;
 	char	**arr;
 	int		i;
+	int		j;
 
-	stack = ps_stack_init(ps_stacksize(argc, argv));
-	if (!stack)
+	s = ps_stack_init(ps_stacksize(argc, argv));
+	if (!s)
 		return (NULL);
-	while (--argc > 0)
+	j = 0;
+	while (++j < argc)
 	{
-		arr = ft_splits(argv[argc], " \n");
-		if (!arr)
-			ps_stack_free(&stack);
+		arr = ft_splits(argv[j], " \n");
+		if (!arr || !*arr)
+			ps_stack_free(&s);
 		while (arr && *arr)
 		{
-			if (stack && (ft_strtoi(*arr, &i) || ps_stack_contains(stack, i)))
-				ps_stack_free(&stack);
-			if (stack)
-				ps_stack_r_push(stack, i);
-			free(*arr);
-			arr++;
+			if (s && (!**arr || ft_strtoi(*arr, &i) || ps_stack_contains(s, i)))
+				ps_stack_free(&s);
+			if (s)
+				ps_stack_r_push(s, i);
+			free(*arr++);
 		}
-		free(arr - ps_argsize(argv[argc]));
+		free(arr - ps_argsize(argv[j]));
 	}
-	return (stack);
+	return (s);
 }

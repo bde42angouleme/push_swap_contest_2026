@@ -6,11 +6,19 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 01:26:05 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/24 01:28:01 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/02 21:50:38 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ps/sort.h>
+
+void	ps_sort_small(t_stack *a, t_stack *b);
+
+static void	ps_sort0(t_stack *a, t_stack *b)
+{
+	(void)a;
+	(void)b;
+}
 
 void	ps_sort(t_stack *a, t_stack *b)
 {
@@ -19,5 +27,5 @@ void	ps_sort(t_stack *a, t_stack *b)
 	if (a->size <= 5)
 		ps_sort_small(a, b);
 	else
-		ps_sort_big(a, b);
+		ps_sort0(a, b);
 }

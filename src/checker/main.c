@@ -6,16 +6,37 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 01:08:07 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/22 03:01:21 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:51:52 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft/data/list.h>
 #include <ft/io.h>
+#include <ft/math.h>
 #include <ft/print.h>
 #include <ps/insn.h>
 #include <ps/parser.h>
 #include <stdlib.h>
+
+void	ps_debug_print(t_stack *a, t_stack *b)
+{
+	size_t	max;
+
+	ft_printf("Stack A\tStack B\n");
+	ft_printf("-------\t-------\n");
+	max = ft_max(a->size, b->size);
+	while (max--)
+	{
+		if (a->size > max)
+			ft_printf("%7d", a->values[max]);
+		else
+			ft_printf("%7c", ' ');
+		if (b->size > max)
+			ft_printf("\t%d", b->values[max]);
+		ft_printf("\n");
+	}
+	ft_printf("-------\t-------\n");
+}
 
 static int	ps_execute(t_stack *a, t_stack *b, t_list *list)
 {
@@ -52,6 +73,7 @@ static int	ps_checker_loop(t_stack *a, t_stack *b)
 	int		ret;
 	t_list	*list;
 
+	ps_debug_print(a, b);
 	list = NULL;
 	ret = 0;
 	while (1)
@@ -70,6 +92,7 @@ static int	ps_checker_loop(t_stack *a, t_stack *b)
 	if (ret != -1)
 		ret = ps_execute(a, b, list);
 	ft_lstclear(&list, free);
+	ps_debug_print(a, b);
 	return (ret);
 }
 

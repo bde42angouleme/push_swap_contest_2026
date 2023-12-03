@@ -6,13 +6,14 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:44:31 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/24 00:25:19 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:05:13 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft/math.h>
 #include <ft/print.h>
 #include <ps/error.h>
+#include <ps/insn.h>
 #include <ps/parser.h>
 #include <ps/sort.h>
 #include <ps/stack.h>
@@ -55,7 +56,10 @@ int	main(int argc, char *argv[])
 		ps_error();
 	}
 	if (!ps_stack_is_sorted(stack_a))
+	{
+		ps_insn_set_should_print(true);
 		ps_sort(stack_a, stack_b);
+	}
 	ps_stack_free(&stack_a);
 	ps_stack_free(&stack_b);
 	return (0);

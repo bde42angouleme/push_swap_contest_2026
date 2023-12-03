@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   ps_sort_stacks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 00:25:26 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/02 21:49:36 by kiroussa         ###   ########.fr       */
+/*   Created: 2023/12/02 21:49:06 by kiroussa          #+#    #+#             */
+/*   Updated: 2023/12/02 21:50:08 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#include <ps/insn.h>
+#include <ps/sort.h>
 
-# include <ps/stack.h>
-
-void	ps_sort(t_stack *a, t_stack *b);
-
-#endif
+void	ps_sort_stacks(t_stack *a, t_stack *b)
+{
+}

@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:58:28 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/02 00:17:23 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:03:39 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 # define INSN_H
 
 # include <ps/stack.h>
-
-# ifndef PS_INSN_PRINT
-#  define PS_INSN_PRINT 0
-# endif
+# include <stdbool.h>
 
 typedef enum e_insn
 {
@@ -56,5 +53,8 @@ void		ps_insn_rr(t_stack *a, t_stack *b);
 void		ps_insn_rra(t_stack *a, t_stack *b);
 void		ps_insn_rrb(t_stack *a, t_stack *b);
 void		ps_insn_rrr(t_stack *a, t_stack *b);
+
+bool		*ps_insn_should_print(void);
+void		ps_insn_set_should_print(bool should_print);
 
 #endif
