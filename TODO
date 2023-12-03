@@ -1,0 +1,4 @@
+- Remove debug_print from checker source code
+ - Make sure to fix it so that it prints in the right order
+- Remake small_sort
+- Make sort_stacks
