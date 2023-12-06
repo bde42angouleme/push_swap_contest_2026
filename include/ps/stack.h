@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:46:35 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/11/22 02:49:55 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 21:10:54 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ void	ps_stack_free(t_stack **stack);
  * @param stack The stack to print.
  */
 void	ps_stack_print(t_stack *stack);
+
+/**
+ * @brief Prints two stacks next to eachother.
+ * @param a The first stack.
+ * @param b The second stack.
+ */
+void	ps_stack_prints(t_stack *a, t_stack *b);
 
 /* Unrestricted operations (read-only) */
 

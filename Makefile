@@ -6,7 +6,7 @@
 #    By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/06 21:19:50 by kiroussa          #+#    #+#              #
-#    Updated: 2023/12/02 22:05:35 by kiroussa         ###   ########.fr        #
+#    Updated: 2023/12/06 21:11:44 by kiroussa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ COMMON_SRC		=	insn/impl/ps_insn_pa.c \
 					stack/ps_stack_free.c \
 					stack/ps_stack_init.c \
 					stack/ps_stack_print.c \
+					stack/ps_stack_prints.c \
 					stack/ps_stack_resize.c
 
 PS_SRC			=	sorting/ps_sort.c \
