@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 01:54:25 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/02 22:51:15 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 20:32:03 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,26 @@ static size_t	ps_stacksize(int argc, char **argv)
 	return (size);
 }
 
+t_stack	*ps_reverse_stack(t_stack *stack)
+{
+	t_stack	*new;
+	size_t	total;
+
+	if (!stack)
+		return (NULL);
+	new = ps_stack_init(stack->capacity);
+	if (!new)
+		return (NULL);
+	total = stack->size;
+	while (total > 0)
+	{
+		ps_stack_r_push(new, ps_stack_r_pop(stack));
+		total--;
+	}
+	ps_stack_free(&stack);
+	return (new);
+}
+
 t_stack	*ps_parse_stack(int argc, char **argv)
 {
 	t_stack	*s;
@@ -69,5 +89,5 @@ t_stack	*ps_parse_stack(int argc, char **argv)
 		}
 		free(arr - ps_argsize(argv[j]));
 	}
-	return (s);
+	return (ps_reverse_stack(s));
 }

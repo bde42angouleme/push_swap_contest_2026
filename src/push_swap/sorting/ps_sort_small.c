@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 00:28:23 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/02 22:47:27 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 20:27:01 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	ps_sort_size3(t_stack *a)
 {
-
+	(void)a;
 }
 
 void	ps_sort_small(t_stack *a, t_stack *b)
