@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_insn_print.c                                    :+:      :+:    :+:   */
+/*   ps_stack_clone.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 21:58:37 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/02 22:04:13 by kiroussa         ###   ########.fr       */
+/*   Created: 2023/12/12 19:54:09 by kiroussa          #+#    #+#             */
+/*   Updated: 2023/12/12 19:56:19 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ps/insn.h>
+#include <ps/stack.h>
 
-bool	*ps_insn_should_print(void)
+t_stack	*ps_stack_clone(t_stack *stack)
 {
-	static bool	should_print = false;
+	t_stack	*new;
+	size_t	i;
 
-	return (&should_print);
-}
-
-void	ps_insn_set_should_print(bool should_print)
-{
-	*ps_insn_should_print() = should_print;
+	new = ps_stack_init(stack->size);
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (i < stack->size)
+	{
+		ps_stack_r_push(new, stack->values[i]);
+		i++;
+	}
+	return (new);
 }

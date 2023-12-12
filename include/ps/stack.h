@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:46:35 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 21:10:54 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/12 19:57:55 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,13 @@ void	ps_stack_print(t_stack *stack);
  */
 void	ps_stack_prints(t_stack *a, t_stack *b);
 
+/**
+ * @brief Clones a stack into a new one.
+ * @param stack The stack to be cloned.
+ * @return The new stack.
+ */
+t_stack	*ps_stack_clone(t_stack *stack);
+
 /* Unrestricted operations (read-only) */
 
 /**
@@ -89,6 +96,20 @@ int		ps_stack_top(t_stack *stack);
  * @note The stack must not be empty.
  */
 int		ps_stack_bottom(t_stack *stack);
+
+/**
+ * @brief Returns the index of the lowest value of the stack.
+ * @param stack The stack to check.
+ * @return The index of the lowest value of the stack.
+ * @note The stack must not be empty.
+ */
+size_t	ps_stack_min_i(t_stack *stack);
+
+int		ps_stack_min(t_stack *stack);
+
+size_t	ps_stack_max_i(t_stack *stack);
+
+int		ps_stack_max(t_stack *stack);
 
 /**
  * @brief Returns the value at the specified index.

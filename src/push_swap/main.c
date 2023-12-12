@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:44:31 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/02 22:05:13 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:51:58 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,27 @@ void	ps_debug_print(t_stack *a, t_stack *b)
 	ft_printf("-------\t-------\n");
 }
 
+static void	ps_iterate(void *data)
+{
+	ft_putendl((char *) data);
+}
+
+static void	ps_handle_sort(t_stack *a, t_stack *b)
+{
+	t_list	*list;
+
+	if (!ps_stack_is_sorted(a))
+		return ;
+	list = ps_sort(a, b);
+	if (!list)
+	{
+		ft_dprintf(2, "An error has occured.\n");
+		return ;
+	}
+	ft_lstiter(list, ps_iterate);
+	ft_lstfree(&list, free);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
@@ -55,11 +76,7 @@ int	main(int argc, char *argv[])
 		ps_stack_free(&stack_a);
 		ps_error();
 	}
-	if (!ps_stack_is_sorted(stack_a))
-	{
-		ps_insn_set_should_print(true);
-		ps_sort(stack_a, stack_b);
-	}
+	ps_handle_sort(stack_a, stack_b);
 	ps_stack_free(&stack_a);
 	ps_stack_free(&stack_b);
 	return (0);

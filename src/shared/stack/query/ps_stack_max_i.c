@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   ps_stack_max_i.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 00:25:26 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/12 18:39:32 by kiroussa         ###   ########.fr       */
+/*   Created: 2023/12/12 20:00:33 by kiroussa          #+#    #+#             */
+/*   Updated: 2023/12/12 20:01:57 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#include <ps/stack.h>
+#include <limits.h>
 
-# include <ft/data/list.h>
-# include <ps/stack.h>
+size_t	ps_stack_max_i(t_stack *stack)
+{
+	size_t	i;
+	size_t	max_i;
+	int		max;
 
-typedef t_list	*(*t_sorting_algorithm)(t_stack *, t_stack *);
-
-t_list	*ps_sort(t_stack *a, t_stack *b);
-t_list	*ps_sort_smol(t_stack *a, t_stack *b);
-
-t_list	*ps_butterfly_sort(t_stack *a, t_stack *b);
-t_list	*ps_turk_sort(t_stack *a, t_stack *b);
-t_list	*ps_kroussar_sort(t_stack *a, t_stack *b);
-
-#endif
+	i = 0;
+	max_i = 0;
+	max = INT_MIN;
+	while (i < stack->size)
+	{
+		if (stack->values[i] > max)
+		{
+			max = stack->values[i];
+			max_i = i;
+		}
+		i++;
+	}
+	return (max_i);
+}

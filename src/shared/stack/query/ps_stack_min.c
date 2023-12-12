@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   ps_stack_min.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 00:25:26 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/12 18:39:32 by kiroussa         ###   ########.fr       */
+/*   Created: 2023/12/12 19:58:03 by kiroussa          #+#    #+#             */
+/*   Updated: 2023/12/12 20:01:22 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#include <ps/stack.h>
+#include <limits.h>
 
-# include <ft/data/list.h>
-# include <ps/stack.h>
+int	ps_stack_min(t_stack *stack)
+{
+	size_t	i;
+	int		min;
 
-typedef t_list	*(*t_sorting_algorithm)(t_stack *, t_stack *);
-
-t_list	*ps_sort(t_stack *a, t_stack *b);
-t_list	*ps_sort_smol(t_stack *a, t_stack *b);
-
-t_list	*ps_butterfly_sort(t_stack *a, t_stack *b);
-t_list	*ps_turk_sort(t_stack *a, t_stack *b);
-t_list	*ps_kroussar_sort(t_stack *a, t_stack *b);
-
-#endif
+	min = INT_MAX;
+	i = 0;
+	while (i < stack->size)
+	{
+		if (stack->values[i] < min)
+			min = stack->values[i];
+		i++;
+	}
+	return (min);
+}
