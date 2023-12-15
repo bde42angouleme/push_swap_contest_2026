@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:46:08 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 12:31:15 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 20:47:57 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,6 @@ t_list	*ps_butterfly_stage1(t_stack *a, t_stack *b, size_t n_boxes,
 			size_t n_per_boxes);
 t_list	*ps_butterfly_stage2(t_stack *a, t_stack *b);
 
-static size_t	ps_fabricate_index(t_stack *stack, int number)
-{
-	size_t	index;
-	size_t	i;
-
-	index = 0;
-	i = 0;
-	while (i < stack->size)
-	{
-		if (stack->values[i] < number)
-			index++;
-		i++;
-	}
-	return (index);
-}
-
-static t_stack	*ps_normalize(t_stack *stack)
-{
-	t_stack	*normalized;
-	size_t	index;
-	size_t	i;
-
-	normalized = ps_stack_init(stack->size);
-	if (!normalized)
-		ps_stack_free(&stack);
-	if (!normalized)
-		return (NULL);
-	i = 0;
-	while (i < stack->size)
-	{
-		index = ps_fabricate_index(stack, stack->values[i]);
-		ps_stack_r_push(normalized, index);
-		i++;
-	}
-	ps_stack_free(&stack);
-	return (normalized);
-}
-
 t_list	*ps_butterfly_sort(t_stack *a, t_stack *b)
 {
 	t_list	*list;
@@ -62,7 +24,7 @@ t_list	*ps_butterfly_sort(t_stack *a, t_stack *b)
 	size_t	n_boxes;
 
 	list = NULL;
-	a = ps_normalize(a);
+	a = ps_stack_normalize(a);
 	if (a)
 	{
 		n_per_boxes = (size_t)(((float)ft_max(20, a->size)) * 0.055 + 14.5);

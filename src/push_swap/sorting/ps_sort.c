@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 01:26:05 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 11:14:17 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 23:37:53 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 
 static t_list	*ps_sort0(t_stack *a, t_stack *b)
 {
-	static t_sorting_algorithm	algos[] = {ps_butterfly_sort, ps_turk_sort,
-		ps_kroussar_sort, NULL};
+	static t_sorting_algorithm	algos[] = {ps_turk_sort, NULL};
 	size_t						index;
 	t_list						*final_list;
 	t_list						*tmp_list;
@@ -49,5 +48,8 @@ t_list	*ps_sort(t_stack *a, t_stack *b)
 		return (NULL);
 	if (a->size <= 5)
 		return (ps_sort_smol(a, b));
+	a = ps_stack_normalize(a);
+	if (!a)
+		return (NULL);
 	return (ps_sort0(a, b));
 }

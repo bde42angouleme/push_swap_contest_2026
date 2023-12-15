@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 00:28:23 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 12:31:21 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 23:29:54 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <ps/sort.h>
 #include <ft/print.h>
 
-static t_list	*ps_sort_size3(t_stack *a)
+t_list	*ps_sort_size3(t_stack *a)
 {
 	t_list	*list;
 	size_t	index;
