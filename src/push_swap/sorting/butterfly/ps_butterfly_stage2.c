@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:57:39 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 15:08:57 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 19:54:33 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_list	*ps_butterfly_stage2(t_stack *a, t_stack *b)
 		if (a->size >= 2 && a->values[a->size - 1] > a->values[a->size - 2])
 		{
 			if (b->size > 2 && ps_stack_index(b, ps_get_best_value(b, NULL))
-				== (int) (b->size - 2))
+				== (int)(b->size - 2))
 				ps_wrap_exec(SS, a, b, &list);
 			else
 				ps_wrap_exec(SA, a, b, &list);
