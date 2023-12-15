@@ -6,19 +6,13 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 00:28:23 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 09:52:10 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:31:21 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ps/insn.h>
 #include <ps/sort.h>
 #include <ft/print.h>
-
-static void	ps_wrap_exec(t_insn insn, t_stack *a, t_stack *b, t_list **feedback)
-{
-	ps_insn_exec(insn, a, b);
-	ft_lst_tadd(feedback, (char *) ps_insn_name(insn));
-}
 
 static t_list	*ps_sort_size3(t_stack *a)
 {
@@ -40,21 +34,12 @@ static t_list	*ps_sort_size5(t_stack *a, t_stack *b)
 {
 	t_list	*list;
 	size_t	original_size;
-	size_t	index;
-	float	middle;
 
 	list = NULL;
 	original_size = a->size;
 	while (a->size > 3)
 	{
-		middle = ((float)a->size) / 2. + .5;
-		index = a->size - ps_stack_min_i(a) - 1;
-		if (index < (size_t)middle)
-			while (index-- > 0)
-				ps_wrap_exec(RA, a, NULL, &list);
-		else
-			while (index++ < a->size)
-				ps_wrap_exec(RRA, a, NULL, &list);
+		ps_fetch(a, ps_stack_min_i(a), &list, (t_insn[2]){RA, RRA});
 		ps_wrap_exec(PB, a, b, &list);
 	}
 	ft_lst_add(&list, ps_sort_size3(a));

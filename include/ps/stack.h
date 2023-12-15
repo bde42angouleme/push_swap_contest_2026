@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:46:35 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/12 19:57:55 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:55:09 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,28 @@ int		ps_stack_bottom(t_stack *stack);
  */
 size_t	ps_stack_min_i(t_stack *stack);
 
+/**
+ * @brief Returns the lowest value of the stack.
+ * @param stack The stack to check.
+ * @return The lowest value of the stack.
+ * @note The stack must not be empty.
+ */
 int		ps_stack_min(t_stack *stack);
 
+/**
+ * @brief Returns the index of the highest value of the stack.
+ * @param stack The stack to check.
+ * @return The index of the highest value of the stack.
+ * @note The stack must not be empty.
+ */
 size_t	ps_stack_max_i(t_stack *stack);
 
+/**
+ * @brief Returns the highest value of the stack.
+ * @param stack The stack to check.
+ * @return The highest value of the stack.
+ * @note The stack must not be empty.
+ */
 int		ps_stack_max(t_stack *stack);
 
 /**
@@ -126,6 +144,14 @@ int		ps_stack_get(t_stack *stack, size_t index);
  * @return 1 if the stack contains the value, 0 otherwise.
  */
 int		ps_stack_contains(t_stack *stack, int value);
+
+/**
+ * @brief Returns the index of the specified value.
+ * @param stack The stack to check.
+ * @param value The value to check for.
+ * @return The index of the specified value, or -1 if the value is not found.
+ */
+int		ps_stack_index(t_stack *stack, int value);
 
 /* Restricted operations (read-write) */
 

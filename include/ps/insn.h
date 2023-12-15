@@ -6,15 +6,15 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:58:28 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/12 16:41:23 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:12:45 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INSN_H
 # define INSN_H
 
+# include <ft/data/list.h>
 # include <ps/stack.h>
-# include <stdbool.h>
 
 typedef enum e_insn
 {
@@ -41,6 +41,9 @@ typedef struct s_insn_info
 void		ps_insn_exec(t_insn insn, t_stack *a, t_stack *b);
 const char	*ps_insn_name(t_insn insn);
 t_insn		ps_insn_from_name(const char *name);
+
+void		ps_wrap_exec(t_insn insn, t_stack *a, t_stack *b,
+				t_list **feedback);
 
 void		ps_insn_pa(t_stack *a, t_stack *b);
 void		ps_insn_pb(t_stack *a, t_stack *b);
