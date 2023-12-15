@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 00:28:23 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 08:49:07 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:05:27 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_list	*ps_sort_size5(t_stack *a, t_stack *b)
 	while (a->size > 3)
 	{
 		index = ps_stack_min_i(a);
-		if (index > a->size / 2)
+		if (index < a->size / 2)
 			while (index-- > 0)
 				ps_wrap_exec(RA, a, NULL, &list);
 		else
