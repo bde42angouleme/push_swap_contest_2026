@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 01:08:07 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 21:12:18 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 06:48:47 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ps_parse_input(char *input, t_list **list)
 	insn = ps_insn_from_name(input);
 	if (insn == NONE)
 		return (-1);
-	ft_lstadd_back(list, ft_lstnew(ft_strdup(input)));
+	ft_lst_tadd(list, ft_strdup(input));
 	return (0);
 }
 
@@ -70,7 +70,7 @@ static int	ps_checker_loop(t_stack *a, t_stack *b)
 	}
 	if (ret != -1)
 		ret = ps_execute(a, b, list);
-	ft_lstclear(&list, free);
+	ft_lst_free(&list, free);
 	return (ret);
 }
 

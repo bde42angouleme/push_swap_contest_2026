@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:44:31 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/12 18:51:58 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 08:41:13 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,13 @@ static void	ps_handle_sort(t_stack *a, t_stack *b)
 {
 	t_list	*list;
 
-	if (!ps_stack_is_sorted(a))
+	if (ps_stack_is_sorted(a))
 		return ;
 	list = ps_sort(a, b);
 	if (!list)
-	{
-		ft_dprintf(2, "An error has occured.\n");
-		return ;
-	}
-	ft_lstiter(list, ps_iterate);
-	ft_lstfree(&list, free);
+		ps_error();
+	ft_lst_foreach(list, ps_iterate);
+	ft_lst_free(&list, NULL);
 }
 
 int	main(int argc, char *argv[])

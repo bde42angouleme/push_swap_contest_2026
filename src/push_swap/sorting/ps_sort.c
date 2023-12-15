@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 01:26:05 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/12 18:44:15 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/15 00:34:45 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ static t_list	*ps_sort0(t_stack *a, t_stack *b)
 	while (algos[index])
 	{
 		tmp_list = algos[index](ps_stack_clone(a), ps_stack_clone(b));
-		if (!final_list || ft_lstsize(tmp_list) < ft_lstsize(final_list))
+		if (!final_list || ft_lst_size(tmp_list) < ft_lst_size(final_list))
 		{
-			ft_lstfree(&final_list, free);
+			ft_lst_free(&final_list, free);
 			final_list = tmp_list;
 		}
 		else
-			ft_lstfree(&tmp_list, free);
+			ft_lst_free(&tmp_list, free);
 	}
 	return (final_list);
 }
