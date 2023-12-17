@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 00:28:23 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/16 17:02:33 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:06:19 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,11 @@ t_list	*ps_sort_smol(t_stack *a, t_stack *b)
 	t_list	*tmp;
 
 	list = NULL;
-	if (a->size == 2)
-	{
-		if (a->values[1] > a->values[0])
-			ps_wrap_exec(SA, a, b, &list);
-	}
+	if (a->size == 2 && a->values[1] > a->values[0])
+		ps_wrap_exec(SA, a, b, &list);
 	else if (a->size == 3)
 		list = ps_sort_size3(a);
-	else if (a->size <= 5)
+	else if (a->size == 4 || a->size == 5)
 	{
 		list = ps_sort_size5_lsd(ps_stack_clone(a), ps_stack_clone(b));
 		tmp = ps_sort_size5_hsd(ps_stack_clone(a), ps_stack_clone(b));

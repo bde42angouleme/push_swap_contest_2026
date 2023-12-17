@@ -6,7 +6,7 @@
 #    By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/06 21:19:50 by kiroussa          #+#    #+#              #
-#    Updated: 2023/12/16 16:02:35 by kiroussa         ###   ########.fr        #
+#    Updated: 2023/12/17 10:07:35 by kiroussa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,10 +69,6 @@ PS_SRC			=	optimizer/ps_optimize.c \
 					sorting/butterfly/ps_butterfly_sort.c \
 					sorting/butterfly/ps_butterfly_stage1.c \
 					sorting/butterfly/ps_butterfly_stage2.c \
-					sorting/kroussar/ps_kroussar_sort.c \
-					sorting/turk/ps_turk_sort.c \
-					sorting/turk/ps_turk_stage1.c \
-					sorting/turk/ps_turk_stage2.c \
 					sorting/ps_fetch.c \
 					sorting/ps_sort.c \
 					sorting/ps_sort_small.c \

@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:44:31 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/16 22:00:14 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:05:28 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,10 @@ static void	ps_optimize_nullify(
 				tmp2 = tmp->next;
 			ft_lst_remove(list, to_remove1, NULL);
 			ft_lst_remove(list, to_remove2, NULL);
+			continue ;
 		}
-		else
-		{
-			tmp = tmp2;
-			tmp2 = tmp2->next;
-		}
+		tmp = tmp2;
+		tmp2 = tmp2->next;
 	}
 }
 
