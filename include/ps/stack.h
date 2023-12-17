@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:46:35 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 10:55:09 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 23:46:48 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,6 @@ void	ps_stack_resize(t_stack *stack, size_t new_size);
  * @param stack A pointer to the stack to free.
  */
 void	ps_stack_free(t_stack **stack);
-
-/**
- * @brief Prints a stack.
- * @param stack The stack to print.
- */
-void	ps_stack_print(t_stack *stack);
-
-/**
- * @brief Prints two stacks next to eachother.
- * @param a The first stack.
- * @param b The second stack.
- */
-void	ps_stack_prints(t_stack *a, t_stack *b);
 
 /**
  * @brief Clones a stack into a new one.

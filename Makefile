@@ -6,7 +6,7 @@
 #    By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/06 21:19:50 by kiroussa          #+#    #+#              #
-#    Updated: 2023/12/17 10:07:35 by kiroussa         ###   ########.fr        #
+#    Updated: 2023/12/17 23:46:11 by kiroussa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,8 +61,6 @@ COMMON_SRC		=	insn/impl/ps_insn_pa.c \
 					stack/ps_stack_clone.c \
 					stack/ps_stack_free.c \
 					stack/ps_stack_init.c \
-					stack/ps_stack_print.c \
-					stack/ps_stack_prints.c \
 					stack/ps_stack_resize.c
 
 PS_SRC			=	optimizer/ps_optimize.c \
@@ -89,7 +87,7 @@ SRC_OBJS		= $(COMMON_OBJ) $(PS_OBJ)
 BONUS_SRC_OBJS	= $(COMMON_OBJ) $(CHECKER_OBJ)
 
 CC				= clang
-CFLAGS			= -Wall -Wextra -Werror -g3
+CFLAGS			= -Wall -Wextra -Werror
 COPTS			= -I $(INCLUDES) -I $(LIBFT_SRC)/include
 
 all:			$(NAME)
