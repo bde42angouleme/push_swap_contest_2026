@@ -6,12 +6,13 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:46:08 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/17 07:19:10 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 07:40:46 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft/math.h>
 #include <ps/sort.h>
+#include <ft/print.h>
 
 t_list	*ps_butterfly_stage1(t_stack *a, t_stack *b, size_t n_boxes,
 			size_t n_per_boxes);
@@ -39,9 +40,11 @@ t_list	*ps_butterfly_sort(t_stack *a, t_stack *b)
 	t_list	*tmp;
 	size_t	n_per;
 
-	n_per = 3;
+	n_per = a->size / 10;
+	if (n_per == 0)
+		n_per = 1;
 	list = NULL;
-	while (n_per <= a->size / 2)
+	while (n_per <= (size_t)ft_min(a->size / 2, 90))
 	{
 		tmp = ps_butterfly_n_item(ps_stack_clone(a), ps_stack_clone(b), n_per);
 		if (!tmp)
