@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:44:31 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/17 07:19:29 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:15:36 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,6 @@
 #include <ps/sort.h>
 #include <ps/stack.h>
 #include <stdlib.h>
-
-void	ps_debug_print(t_stack *a, t_stack *b)
-{
-	size_t	max;
-
-	ft_printf("Stack A\tStack B\n");
-	ft_printf("-------\t-------\n");
-	max = ft_max(a->size, b->size);
-	while (max--)
-	{
-		if (a->size > max)
-			ft_printf("%7d", a->values[max]);
-		else
-			ft_printf("%7c", ' ');
-		if (b->size > max)
-			ft_printf("\t%d", b->values[max]);
-		ft_printf("\n");
-	}
-	ft_printf("-------\t-------\n");
-}
 
 static void	ps_iterate(void *data)
 {

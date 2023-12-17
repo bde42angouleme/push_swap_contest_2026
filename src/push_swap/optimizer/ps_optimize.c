@@ -6,11 +6,10 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:44:31 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/17 10:05:28 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:15:46 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft/print.h>
 #include <ps/optimize.h>
 
 static void	ps_optimize_nullify(

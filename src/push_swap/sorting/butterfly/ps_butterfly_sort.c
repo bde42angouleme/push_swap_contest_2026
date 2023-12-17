@@ -6,13 +6,12 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:46:08 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/17 07:40:46 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:15:15 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft/math.h>
 #include <ps/sort.h>
-#include <ft/print.h>
 
 t_list	*ps_butterfly_stage1(t_stack *a, t_stack *b, size_t n_boxes,
 			size_t n_per_boxes);
