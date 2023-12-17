@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 01:08:07 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 09:43:45 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:13:46 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ static int	ps_execute(t_stack *a, t_stack *b, t_list *list)
 	curr = list;
 	while (curr)
 	{
-		if (!ft_strcmp(curr->content, "print"))
-			ps_stack_prints(a, b);
-		else
-			ps_insn_exec(ps_insn_from_name(curr->content), a, b);
+		ps_insn_exec(ps_insn_from_name(curr->content), a, b);
 		curr = curr->next;
 	}
 	if (ps_stack_is_sorted(a) && ps_stack_is_empty(b))
@@ -43,11 +40,6 @@ static int	ps_parse_input(char *input, t_list **list)
 	t_insn	insn;
 
 	input[ft_strlen(input) - 1] = '\0';
-	if (!ft_strcmp(input, "print"))
-	{
-		ft_lst_tadd(list, ft_strdup(input));
-		return (0);
-	}
 	insn = ps_insn_from_name(input);
 	if (insn == NONE)
 		return (-1);
