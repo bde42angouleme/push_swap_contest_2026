@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:44:31 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 08:41:13 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 07:19:29 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	main(int argc, char *argv[])
 		ps_error();
 	}
 	ps_handle_sort(stack_a, stack_b);
-	ps_stack_free(&stack_a);
 	ps_stack_free(&stack_b);
 	return (0);
 }
