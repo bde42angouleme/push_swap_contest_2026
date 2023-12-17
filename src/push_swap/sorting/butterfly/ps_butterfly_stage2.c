@@ -6,104 +6,55 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:57:39 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/17 10:00:21 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 10:03:12 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ps/sort.h>
 
-static int	ps_preemptive_swap(t_stack *a, t_stack *b, int* next, t_list **list)
+static int	ps_get_best_value(t_stack *stack, int *shortcut)
 {
-	if (b->values[b->size - 1] == *next)
-	{
-		ps_wrap_exec(PA, a, b, list);
-		ps_wrap_exec(RA, a, b, list);
-		*next += 1;
-		return (1);
-	}
-	return (0);
-}
+	size_t	insns;
+	size_t	insns2;
+	int		max;
 
-static size_t	ps_preemptive_lookup(t_stack *stack, int idx)
-{
-	int	n_preemptive;
-	int	last_n;
-
-	last_n = 0;
-	while (stack)
+	max = ps_stack_max(stack);
+	if (shortcut && *shortcut)
 	{
-		n_preemptive = 0;
-		if (idx > (int)((float)stack->size / 2.))
-		{
-			while (idx++ < (int)stack->size - 1)
-			{
-				ps_wrap_exec(RB, NULL, stack, NULL);
-				if (stack->values[stack->size - 1] - (n_preemptive + 1) == stack->values[idx])
-					n_preemptive++;
-			}
-		}
-		else
-		{
-			while (idx-- >= 0)
-			{
-				ps_wrap_exec(RRB, NULL, stack, NULL);
-				if (stack->values[stack->size - 1] - (n_preemptive + 1) == stack->values[idx])
-					n_preemptive++;
-			}
-		}
-		if (last_n == n_preemptive)
-			break ;
-		last_n = n_preemptive;
+		*shortcut = 0;
+		return (max);
 	}
-	ps_stack_free(&stack);
-	return (n_preemptive);
-}
-
-static int	ps_tag_along(t_stack *a, t_stack *b, int idx, t_list **list)
-{
-	int		moves;
-	int		moves_tmp;
-	int		next;
-
-	moves = ps_preemptive_lookup(ps_stack_clone(b), idx);
-	moves_tmp = moves;
-	next = b->values[idx] - moves;
-	if (idx > (int)((float)b->size / 2.))
+	insns = ps_fetch_insns(stack, ps_stack_index(stack, max));
+	insns2 = ps_fetch_insns(stack, ps_stack_index(stack, max - 1));
+	if (insns2 < insns)
 	{
-		while (idx++ < (int)b->size - 1)
-		{
-			ps_wrap_exec(RB, a, b, list);
-			if (moves-- > 0)
-				ps_preemptive_swap(a, b, &next, list);
-		}
+		if (shortcut)
+			*shortcut = 1;
+		return (max - 1);
 	}
-	else
-	{
-		while (idx-- >= 0)
-		{
-			ps_wrap_exec(RRB, a, b, list);
-			if (moves-- > 0)
-				ps_preemptive_swap(a, b, &next, list);
-		}
-	}
-	return (moves_tmp);
+	return (max);
 }
 
 t_list	*ps_butterfly_stage2(t_stack *a, t_stack *b)
 {
 	t_list	*list;
 	int		value;
-	int		n_insn;
+	int		shortcut;
 
 	list = NULL;
+	shortcut = 0;
 	while (b->size > 0)
 	{
-		value = ps_stack_max(b);
-		n_insn = ps_tag_along(a, b, ps_stack_index(b, value), &list);
+		value = ps_get_best_value(b, &shortcut);
+		ps_fetch(b, ps_stack_index(b, value), &list, (t_insn[2]){RB, RRB});
 		ps_wrap_exec(PA, a, b, &list);
-		while (n_insn-- > 0)
+		if (a->size >= 2 && a->values[a->size - 1] > a->values[a->size - 2])
 		{
-			ps_wrap_exec(RRA, a, b, &list);
+			if (b->size > 2 && ps_stack_index(b, ps_get_best_value(b, NULL))
+				== (int)(b->size - 2))
+				ps_wrap_exec(SS, a, b, &list);
+			else
+				ps_wrap_exec(SA, a, b, &list);
 		}
 	}
 	return (list);
