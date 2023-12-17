@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:39:36 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/17 01:54:12 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 08:43:00 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
  * 			stack.
  * aka. ps_bon_toutou
  */
-void	ps_fetch(t_stack *stack, size_t index, t_list **list, t_insn insns[2])
+size_t	ps_fetch(t_stack *stack, size_t index, t_list **list, t_insn insns[2])
 {
-	int		middle;
 	t_stack	*a;
 	t_stack	*b;
 	int		idx;
+	size_t	n_insn;
 
 	a = stack;
 	b = NULL;
@@ -31,17 +31,18 @@ void	ps_fetch(t_stack *stack, size_t index, t_list **list, t_insn insns[2])
 		a = NULL;
 	if (insns[0] == RB)
 		b = stack;
-	middle = (int)((float)stack->size / 2.);
-	if (idx > middle)
+	n_insn = 0;
+	if ((idx > (int)((float)stack->size / 2.) && insns[0]) || !insns[1])
 	{
-		while (idx++ < (int)stack->size - 1)
+		while (idx++ < (int)stack->size - 1 && ++n_insn)
 			ps_wrap_exec(insns[0], a, b, list);
 	}
 	else
 	{
-		while (idx-- >= 0)
+		while (idx-- >= 0 && ++n_insn)
 			ps_wrap_exec(insns[1], a, b, list);
 	}
+	return (n_insn);
 }
 
 size_t	ps_fetch_insns(t_stack *stack, size_t index)

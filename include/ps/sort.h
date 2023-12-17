@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 00:25:26 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 20:47:55 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 08:41:39 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_list	*ps_kroussar_sort(t_stack *a, t_stack *b);
 
 t_stack	*ps_stack_normalize(t_stack *stack);
 
-void	ps_fetch(t_stack *stack, size_t index, t_list **list, t_insn insns[2]);
+size_t	ps_fetch(t_stack *stack, size_t index, t_list **list, t_insn insns[2]);
 size_t	ps_fetch_insns(t_stack *stack, size_t index);
 
 #endif
