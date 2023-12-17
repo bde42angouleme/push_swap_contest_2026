@@ -6,11 +6,10 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 05:04:43 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/12 16:41:12 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 00:50:20 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft/print.h>
 #include <ps/insn.h>
 
 void	ps_insn_exec(t_insn insn, t_stack *a, t_stack *b)
@@ -24,13 +23,14 @@ void	ps_insn_exec(t_insn insn, t_stack *a, t_stack *b)
 	{0, NULL}
 	};
 
-	i = -1;
-	while (insn_info_map[++i].f)
+	i = 0;
+	while (insn_info_map[i].f)
 	{
 		if (insn_info_map[i].insn == insn)
 		{
 			insn_info_map[i].f(a, b);
 			return ;
 		}
+		i++;
 	}
 }

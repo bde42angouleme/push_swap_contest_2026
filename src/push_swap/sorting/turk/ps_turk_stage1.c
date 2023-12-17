@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 21:03:08 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 23:31:21 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 00:01:57 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static int	ps_distance(size_t idx1, size_t idx2, size_t size)
 		dist_to_side2 = idx2;
 	}
 	dist_around = ft_abs(dist_to_side1 + dist_to_side2);
-	ft_printf("   tab of %u, %u to %u: b:%d a:%d\n", size, idx1, idx2, dist_between, dist_around);
 	if (dist_around < dist_between)
 		return (dist_around);
 	return (dist_between);
@@ -78,7 +77,6 @@ static size_t	ps_calc(t_stack *stack, size_t index, int val, bool insert)
 		ps_stack_r_push(stack, val);
 	}
 	moves = ps_distance(index, best_index, stack->size);
-	ft_printf("  stack[%u]=%d should go to %u\n", index, val, best_index);
 	if (insert)
 		ps_stack_r_pop(stack);
 	return (moves);
@@ -102,7 +100,6 @@ static size_t	ps_find_best_target(t_stack *a, t_stack *b)
 		size_t to_up = ps_calc(a, index, val, false);
 		size_t to_target = ps_calc(b, index, val, true);
 		insns = to_up + 1 + to_target;
-		ft_printf("  to_up = %u,  to_target = %u,  total = %u\n", to_up, to_target, insns - 1);
 		if (insns < best_insns)
 		{
 			best_insns = insns;
@@ -120,8 +117,8 @@ void	ps_turk_stage1(t_stack *a, t_stack *b, t_list **list)
 	(void)a;
 	(void)b;
 	(void)list;
-	ft_printf("Trying to find the best value to move...\n");
 	ps_stack_prints(a, b);
+	ft_printf("Trying to find the best value to move...\n");
 	index = ps_find_best_target(a, b);
 	ft_printf("GOT stack[%u] = %d\n", index, ps_stack_get(a, index));
 }

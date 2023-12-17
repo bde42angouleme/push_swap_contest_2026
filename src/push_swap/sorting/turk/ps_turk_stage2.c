@@ -6,16 +6,19 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 21:05:39 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/16 00:04:50 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/16 23:55:01 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ps/error.h>
 #include <ps/sort.h>
 
 t_list	*ps_sort_size3(t_stack *a);
 
 void	ps_turk_stage2(t_stack *a, t_stack *b, t_list **list)
 {
+	if (a->size != 3)
+		ps_error();
 	ft_lst_add(list, ps_sort_size3(a));
 	while (b->size > 0)
 	{

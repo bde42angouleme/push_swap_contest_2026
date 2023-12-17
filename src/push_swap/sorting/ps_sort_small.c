@@ -6,13 +6,13 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 00:28:23 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 23:29:54 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/16 17:02:33 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ps/insn.h>
+#include <ps/optimize.h>
 #include <ps/sort.h>
-#include <ft/print.h>
 
 t_list	*ps_sort_size3(t_stack *a)
 {
@@ -30,28 +30,49 @@ t_list	*ps_sort_size3(t_stack *a)
 	return (list);
 }
 
-static t_list	*ps_sort_size5(t_stack *a, t_stack *b)
+static t_list	*ps_sort_size5_lsd(t_stack *a, t_stack *b)
 {
 	t_list	*list;
-	size_t	original_size;
 
 	list = NULL;
-	original_size = a->size;
 	while (a->size > 3)
 	{
 		ps_fetch(a, ps_stack_min_i(a), &list, (t_insn[2]){RA, RRA});
 		ps_wrap_exec(PB, a, b, &list);
 	}
 	ft_lst_add(&list, ps_sort_size3(a));
-	ps_wrap_exec(PA, a, b, &list);
-	if (original_size == 5)
+	while (b->size > 0)
 		ps_wrap_exec(PA, a, b, &list);
+	ps_stack_free(&a);
+	ps_stack_free(&b);
+	return (list);
+}
+
+static t_list	*ps_sort_size5_hsd(t_stack *a, t_stack *b)
+{
+	t_list	*list;
+
+	list = NULL;
+	while (a->size > 3)
+	{
+		ps_fetch(a, ps_stack_max_i(a), &list, (t_insn[2]){RA, RRA});
+		ps_wrap_exec(PB, a, b, &list);
+	}
+	ft_lst_add(&list, ps_sort_size3(a));
+	while (b->size > 0)
+	{
+		ps_wrap_exec(PA, a, b, &list);
+		ps_wrap_exec(RA, a, b, &list);
+	}
+	ps_stack_free(&a);
+	ps_stack_free(&b);
 	return (list);
 }
 
 t_list	*ps_sort_smol(t_stack *a, t_stack *b)
 {
 	t_list	*list;
+	t_list	*tmp;
 
 	list = NULL;
 	if (a->size == 2)
@@ -62,6 +83,18 @@ t_list	*ps_sort_smol(t_stack *a, t_stack *b)
 	else if (a->size == 3)
 		list = ps_sort_size3(a);
 	else if (a->size <= 5)
-		list = ps_sort_size5(a, b);
+	{
+		list = ps_sort_size5_lsd(ps_stack_clone(a), ps_stack_clone(b));
+		tmp = ps_sort_size5_hsd(ps_stack_clone(a), ps_stack_clone(b));
+		ps_optimize(&list);
+		ps_optimize(&tmp);
+		if (ft_lst_size(list) > ft_lst_size(tmp))
+		{
+			ft_lst_free(&list, NULL);
+			list = tmp;
+		}
+		else
+			ft_lst_free(&tmp, NULL);
+	}
 	return (list);
 }

@@ -6,7 +6,7 @@
 #    By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/06 21:19:50 by kiroussa          #+#    #+#              #
-#    Updated: 2023/12/15 22:41:33 by kiroussa         ###   ########.fr        #
+#    Updated: 2023/12/16 16:02:35 by kiroussa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ COMMON_SRC		=	insn/impl/ps_insn_pa.c \
 					stack/ps_stack_prints.c \
 					stack/ps_stack_resize.c
 
-PS_SRC			=	sorting/butterfly/ps_butterfly_sort.c \
+PS_SRC			=	optimizer/ps_optimize.c \
+					sorting/butterfly/ps_butterfly_sort.c \
 					sorting/butterfly/ps_butterfly_stage1.c \
 					sorting/butterfly/ps_butterfly_stage2.c \
 					sorting/kroussar/ps_kroussar_sort.c \

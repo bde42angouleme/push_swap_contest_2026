@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 20:47:11 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 20:48:09 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 01:55:26 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,15 @@ t_stack	*ps_stack_normalize(t_stack *stack)
 	size_t	i;
 
 	normalized = ps_stack_init(stack->size);
-	if (!normalized)
-		ps_stack_free(&stack);
-	if (!normalized)
-		return (NULL);
-	i = 0;
-	while (i < stack->size)
+	if (normalized)
 	{
-		index = ps_fabricate_index(stack, stack->values[i]);
-		ps_stack_r_push(normalized, index);
-		i++;
+		i = 0;
+		while (i < stack->size)
+		{
+			index = ps_fabricate_index(stack, stack->values[i]);
+			ps_stack_r_push(normalized, index);
+			i++;
+		}
 	}
 	ps_stack_free(&stack);
 	return (normalized);

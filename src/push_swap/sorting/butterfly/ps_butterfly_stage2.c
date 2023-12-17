@@ -6,11 +6,10 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:57:39 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 19:54:33 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 01:53:38 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define PS_BUTTERFLY_SORT
 #include <ps/sort.h>
 
 static int	ps_get_best_value(t_stack *stack, int *shortcut)

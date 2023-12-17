@@ -6,11 +6,10 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:27:47 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/15 19:11:45 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/17 01:56:16 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define PS_BUTTERFLY_SORT
 #include <ps/sort.h>
 #include <limits.h>
 
