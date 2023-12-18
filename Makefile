@@ -6,7 +6,7 @@
 #    By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/06 21:19:50 by kiroussa          #+#    #+#              #
-#    Updated: 2023/12/17 23:46:11 by kiroussa         ###   ########.fr        #
+#    Updated: 2023/12/18 12:49:13 by kiroussa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,13 @@ BONUS_SRC_OBJS	= $(COMMON_OBJ) $(CHECKER_OBJ)
 
 CC				= clang
 CFLAGS			= -Wall -Wextra -Werror
-COPTS			= -I $(INCLUDES) -I $(LIBFT_SRC)/include
+
+HOST			= $(shell hostname | cut -d. -f2)
+ARCH			= native
+ifeq ($(HOST),42angouleme)
+	ARCH		= skylake
+endif
+COPTS			= -march=$(ARCH) -pipe -I $(INCLUDES) -I $(LIBFT_SRC)/include
 
 all:			$(NAME)
 
@@ -101,7 +107,7 @@ $(BONUS_NAME):	$(LIBFT) $(BONUS_SRC_OBJS)
 	$(CC) $(CFLAGS) $(COPTS) $(BONUS_SRC_OBJS) -o $(BONUS_NAME) $(LIBFT)
 
 $(LIBFT): 
-	make -C $(LIBFT_SRC) -j$(shell nproc) CFLAGS="$(CFLAGS)"
+	make -C $(LIBFT_SRC) -j CFLAGS="$(CFLAGS)"
 
 %.o:			%.c
 	$(CC) $(CFLAGS) $(COPTS) -c $< -o $@
