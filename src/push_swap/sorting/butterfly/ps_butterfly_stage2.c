@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:57:39 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/18 12:41:13 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:03:34 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	ps_preemptive_min(t_stack *a, t_stack *b, int idx)
 	}
 	else
 		while (idx-- >= 0)
-			if (b->values[idx] < min && b->values[idx] > max)
+			if (idx >= 0 && b->values[idx] < min && b->values[idx] > max)
 				min = b->values[idx];
 	return (min);
 }
