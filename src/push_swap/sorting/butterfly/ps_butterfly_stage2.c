@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:57:39 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/18 14:03:34 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/19 23:05:20 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ static void	ps_preemptive_swap(t_stack *a, t_stack *b, int *next, t_list **list)
 
 static int	ps_preemptive_min(t_stack *a, t_stack *b, int idx)
 {
-	int		i;
 	int		min;
 	int		max;
 
-	i = 0;
 	min = INT_MAX;
 	max = -1;
 	if (a->values[0] != ps_stack_max(a))
