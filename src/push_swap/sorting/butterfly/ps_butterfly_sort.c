@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:46:08 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/17 22:44:38 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/19 01:01:05 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static t_list	*ps_butterfly_n_item(t_stack *a, t_stack *b, size_t n_per_boxes)
 	t_list	*list;
 	size_t	n_boxes;
 
+	if (!a || !b)
+		return (NULL);
 	n_boxes = a->size / n_per_boxes;
 	if (n_boxes * n_per_boxes < a->size)
 		n_boxes++;
