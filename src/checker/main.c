@@ -6,13 +6,12 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 01:08:07 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/17 10:13:46 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:30:04 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft/data/list.h>
 #include <ft/io.h>
-#include <ft/math.h>
 #include <ft/print.h>
 #include <ps/insn.h>
 #include <ps/parser.h>
@@ -60,7 +59,7 @@ static int	ps_checker_loop(t_stack *a, t_stack *b)
 		input = get_next_line(0);
 		if (!input)
 			break ;
-		if (ps_parse_input(input, &list) == -1)
+		if (ret != 0 && ps_parse_input(input, &list) == -1)
 		{
 			free(input);
 			ret = -1;
