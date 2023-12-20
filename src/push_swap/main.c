@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 04:44:31 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/17 10:15:36 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:46:24 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static void	ps_handle_sort(t_stack *a, t_stack *b)
 	t_list	*list;
 
 	if (ps_stack_is_sorted(a))
+	{
+		ps_stack_free(&a);
 		return ;
+	}
 	list = ps_sort(a, b);
 	if (!list)
 		ps_error();
