@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 01:08:07 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/20 14:30:04 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/20 15:05:34 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	ps_checker_loop(t_stack *a, t_stack *b)
 		input = get_next_line(0);
 		if (!input)
 			break ;
-		if (ret != 0 && ps_parse_input(input, &list) == -1)
+		if (ret != -1 && ps_parse_input(input, &list) == -1)
 		{
 			free(input);
 			ret = -1;
