@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:57:39 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/19 23:05:20 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:36:06 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_list	*ps_butterfly_stage2(t_stack *a, t_stack *b)
 	int		value;
 
 	list = NULL;
-	while (b->size > 0)
+	while (b && b->size > 0)
 	{
 		value = ps_stack_max(b);
 		ps_tag_along(a, b, ps_stack_index(b, value), &list);
