@@ -3,3 +3,5 @@ Bravo, tu as a quelques pas de terminer ta participation. Avant de terminer, que
 **👤 Ton login :** `rgodet`
 
 **🗓️ Ta promo :** `2024`
+
+**📶 Niveau :** `500`
