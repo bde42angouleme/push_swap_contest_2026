@@ -6,14 +6,14 @@
 #    By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/06 21:19:50 by kiroussa          #+#    #+#              #
-#    Updated: 2023/12/18 12:49:13 by kiroussa         ###   ########.fr        #
+#    Updated: 2026/02/10 11:22:07 by kiroussa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT_SRC		= libft
 LIBFT			= $(LIBFT_SRC)/build/output/libft.a
 
-NAME			= push_swap
+NAME			= kiroussa
 BONUS_NAME		= checker
 
 INCLUDES		= ./include
@@ -94,7 +94,7 @@ ARCH			= native
 ifeq ($(HOST),42angouleme)
 	ARCH		= skylake
 endif
-COPTS			= -march=$(ARCH) -pipe -I $(INCLUDES) -I $(LIBFT_SRC)/include
+COPTS			= -march=$(ARCH) -pipe -I $(INCLUDES) -I $(LIBFT_SRC)/include -flto=full -O3 -std=c11
 
 all:			$(NAME)
 

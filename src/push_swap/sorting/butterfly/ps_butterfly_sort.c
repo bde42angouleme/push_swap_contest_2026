@@ -6,12 +6,14 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:46:08 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/20 14:32:33 by kiroussa         ###   ########.fr       */
+/*   Updated: 2026/02/10 11:21:33 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft/math.h>
+#include <ps/optimize.h>
 #include <ps/sort.h>
+#include <stdbool.h>
 
 t_list	*ps_butterfly_stage1(t_stack *a, t_stack *b, size_t n_boxes,
 			size_t n_per_boxes);
@@ -39,7 +41,7 @@ static size_t	ps_linear_interpolate_start(t_stack *stack)
 {
 	if (!stack)
 		return (0);
-	return ((size_t)(0.06 * ((float)stack->size) + 9));
+	return ((size_t)(0.03 * ((float)stack->size) + 9.));
 }
 
 static size_t	ps_linear_interpolate_end(t_stack *stack)
@@ -52,6 +54,28 @@ static size_t	ps_linear_interpolate_end(t_stack *stack)
 	start = ps_linear_interpolate_start(stack);
 	range = ((size_t)(0.03 * ((float)stack->size) + 32));
 	return (start + range);
+}
+
+static bool	ps_butterfly_threshold(t_list **list, t_list **tmp)
+{
+	const size_t	old_size = ft_lst_size(*list);
+	const size_t	new_size = ft_lst_size(*tmp);
+	static size_t	nstop = 0;
+
+	if (!*list || (new_size < old_size))
+	{
+		ft_lst_free(list, NULL);
+		*list = *tmp;
+		nstop = 0;
+	}
+	else
+	{
+		ft_lst_free(tmp, NULL);
+		nstop++;
+		if (nstop > 8)
+			return (true);
+	}
+	return (false);
 }
 
 t_list	*ps_butterfly_sort(t_stack *a, t_stack *b)
@@ -69,13 +93,9 @@ t_list	*ps_butterfly_sort(t_stack *a, t_stack *b)
 		tmp = ps_butterfly_n_item(ps_stack_clone(a), ps_stack_clone(b), n_per);
 		if (!tmp)
 			return (NULL);
-		if (!list || ft_lst_size(tmp) < ft_lst_size(list))
-		{
-			ft_lst_free(&list, NULL);
-			list = tmp;
-		}
-		else
-			ft_lst_free(&tmp, NULL);
+		ps_optimize(&tmp);
+		if (ps_butterfly_threshold(&list, &tmp))
+			break ;
 		n_per++;
 	}
 	ps_stack_free(&a);
