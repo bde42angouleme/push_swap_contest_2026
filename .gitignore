@@ -1,0 +1,8 @@
+*.o
+/push_swap
+/kiroussa
+/checker*
+push_swap_tester
+push_swap-testeur-max
+visualizer*
+complexity*
