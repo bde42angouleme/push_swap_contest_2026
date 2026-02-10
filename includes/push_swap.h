@@ -6,7 +6,7 @@
 /*   By: nredouan <nredouan@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 14:27:27 by nredouan          #+#    #+#             */
-/*   Updated: 2026/01/17 12:10:44 by nredouan         ###   ########.fr       */
+/*   Updated: 2026/02/10 14:39:37 by nredouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int		parsing(int argc, char **argv, t_stack **stack_a);
 
 //stack modificators
 void	sa(t_stack **stack, int i);
-void	sb(t_stack **stack, int i);
-void	ss(t_stack **stack_a, t_stack **stack_b);
 void	pa(t_stack **src, t_stack **dest);
 void	pb(t_stack **src, t_stack **dest);
 void	ra(t_stack **stack, int i);

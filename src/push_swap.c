@@ -6,7 +6,7 @@
 /*   By: nredouan <nredouan@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 14:18:21 by nredouan          #+#    #+#             */
-/*   Updated: 2026/01/05 13:30:13 by nredouan         ###   ########.fr       */
+/*   Updated: 2026/02/10 14:38:53 by nredouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,26 @@ static void	sort_algorithm(t_stack **stack_a, t_stack **stack_b, int nbr)
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*a;
+	t_stack	*b;
 	int		nbr;
 
-	stack_a = NULL;
-	stack_b = NULL;
+	a = NULL;
+	b = NULL;
 	error_check(argc, argv);
-	nbr = parsing(argc, argv, &stack_a);
-	if (!stack_a || !dup_check(stack_a) || nbr <= 1)
+	nbr = parsing(argc, argv, &a);
+	if (!a || !dup_check(a) || nbr <= 1)
 	{
-		if (stack_a)
-			ft_lstfree(stack_a);
+		if (a)
+			ft_lstfree(a);
 		if (nbr <= 1)
 			return (0);
 		ft_error();
 	}
-	if (verif_order(stack_a))
+	if (verif_order(a))
 	{
-		ft_lstfree(stack_a);
+		ft_lstfree(a);
 		exit(1);
 	}
-	sort_algorithm(&stack_a, &stack_b, nbr);
+	sort_algorithm(&a, &b, nbr);
 }

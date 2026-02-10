@@ -1,4 +1,4 @@
-NAME		= push_swap
+NAME		= nredouan
 NAME_BONUS	= checker
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
